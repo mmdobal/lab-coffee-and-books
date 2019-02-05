@@ -5,6 +5,11 @@
 
   <label for="">Type:</label>
   <input type="text" name="type" value="{{place.type}}">
+  <label for="">Location:</label>
+  <input type="text" name="latitude" placeholder="Latitude"
+  value="{{place.location.coordinates.[0]}}">
+
+  <input type="text" name="longitude" placeholder="Longitude" value="{{place.location.coordinates.[1]}}">
 
   <button type="submit">Edit</button>
 </form>

@@ -25,10 +25,20 @@ router.get('/addplace', (req, res, next) => {
 });
 
 router.post('/addplace', (req, res, next) => {
-  const { name, type } = req.body;
-  const newPlace = new Place({ name, type });
+  // let location = {
+  // 	type: 'Point',
+  // 	coordinates: [req.body.longitude, req.body.latitude]
+  // };
+
+  const { name, type, location = {
+    type: 'Point',
+    coordinates: [req.body.longitude, req.body.latitude]
+  } } = req.body;
+
+  const newPlace = new Place({ name, type, location });
   newPlace.save()
     .then((place) => {
+      console.log(newPlace);
       res.redirect('/places');
     })
     .catch((error) => {
